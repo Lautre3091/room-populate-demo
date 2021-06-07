@@ -23,26 +23,26 @@
  */
 
 import minimist, {ParsedArgs} from "minimist";
-import {cities} from "./cities";
+import {extensions} from "./extensions";
 import * as path from "path"
 import * as fs from "fs"
 
 /**
  * DB schema path
  */
-const SCHEMA_PATH = path.join(__dirname, "..", "android", "app", "schemas", "com.motorro.roompopulate.cities.CitiesDb");
+const SCHEMA_PATH = path.join("/", "development", "WeAreLautre", "blackrosewar_helper", "app", "schemas", "bzh.wearelautre.blackrosewars_helper.data.AppDatabase");
 /**
  * DB destination file
  */
-const DST_PATH = path.join(__dirname, "..", "android", "app", "src", "main", "assets", "databases", "cities.db");
+const DST_PATH = path.join("/", "development", "WeAreLautre", "blackrosewar_helper", "app", "src", "main", "assets", "databases", "extensions.db");
 /**
  * DB version file
  */
-const VERSION_PATH = path.join(__dirname, "..", "android", "app", "gradle.properties");
+const VERSION_PATH = path.join("/", "development", "WeAreLautre", "blackrosewar_helper", "app", "gradle.properties");
 /**
  * DB version key
  */
-const VERSION_KEY = "CITIES_DB_VERSION";
+const VERSION_KEY = "EXTENSIONS_DB_VERSION";
 
 /**
  * Known arguments
@@ -77,7 +77,7 @@ function incrementDatabaseVersion(file: string, key: string) {
 /**
  * City population
  */
-exports.cities = async () => {
+exports.extensions = async () => {
     const options: Args = minimist<Args>(
         process.argv.slice(2),
         {
@@ -87,9 +87,9 @@ exports.cities = async () => {
     );
 
     // 1. Create database
-    const pathToNewDb = await cities(SCHEMA_PATH, options.dataDir);
+    const pathToNewDb = await extensions(SCHEMA_PATH, options.dataDir);
     // 2. Copy to assets
     fs.copyFileSync(pathToNewDb, DST_PATH);
     // 3. Increment version
-    incrementDatabaseVersion(VERSION_PATH, VERSION_KEY);
+    // incrementDatabaseVersion(VERSION_PATH, VERSION_KEY);
 };

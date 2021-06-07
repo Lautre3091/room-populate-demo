@@ -1,10 +1,10 @@
 ## City database import
 
-Cities are shipped with application in a SQLite database:
+Extensions are shipped with application in a SQLite database:
 1. Copy `city.list.json` from server. Default is `_data` directory here. 
-2. Run the following command to import cities data from file to database:
+2. Run the following command to import extensions data from file to database:
 ```
-  npx gulp cities --dataDir=[path_to_source_files]
+  npx gulp extensions --dataDir=[path_to_source_files]
 ```
 This command will:
 1. Create the latest schema from Room definition.

@@ -1,9 +1,9 @@
 {
   "name": "script",
   "version": "0.0.1",
-  "description": "Cities import tasks",
+  "description": "Extensions import tasks",
   "scripts": {
-    "cities": "npx gulp cities"
+    "extensions": "npx gulp extensions"
   },
   "author": "motorro",
   "license": "ISC",
